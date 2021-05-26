@@ -40,11 +40,15 @@ namespace GroupMe
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GroupMe", Version = "v1" });
             });
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
-
+            
             // REPOS
             services.AddScoped<AccountsRepository>();
+            services.AddTransient<GroupsRepository>();
+            services.AddTransient<GroupMembersRepository>();
             // BUSINESS LOGIC
             services.AddScoped<AccountService>();
+            services.AddTransient<GroupsService>();
+            services.AddTransient<GroupMembersService>();
 
         }
 
